@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Рисование отрезка</title>
+  <style>
+    #canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+<h2>Drawing</h2>
+<div>
+  <label for="k">Tan (k):</label>
+  <input type="number" id="k" value="1">
+</div>
+<div>
+  <label for="b">Moved by (b):</label>
+  <input type="number" id="b" value="0">
+</div>
+<div>
+  <label for="startX">Initial X:</label>
+  <input type="number" id="startX" value="0">
+</div>
+<div>
+  <label for="endX">End X:</label>
+  <input type="number" id="endX" value="100">
+</div>
+<button onclick="drawLine()">Draw</button>
+<canvas id="canvas" width="500" height="500"></canvas>
+
+<script>
+  function drawLine() {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const k = parseFloat(document.getElementById('k').value);
+    const b = parseFloat(document.getElementById('b').value);
+    const startX = parseFloat(document.getElementById('startX').value);
+    const endX = parseFloat(document.getElementById('endX').value);
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    for (let x = startX; x <= endX; x++) {
+      const y = Math.round(k * x + b);
+      ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+</script>
+</body>
+</html>
