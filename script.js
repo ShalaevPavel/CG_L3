@@ -11,7 +11,14 @@ function drawLine() {
     const x2 = parseInt(prompt("Введите X2:"));
     const y2 = parseInt(prompt("Введите Y2:"));
 
+    const startTime = performance.now(); // Запоминаем время начала отрисовки
+
     bresenhamLine(x1, y1, x2, y2);
+
+    const endTime = performance.now(); // Запоминаем время окончания отрисовки
+    const elapsedTime = endTime - startTime; // Вычисляем время отрисовки
+
+    alert("Время отрисовки: " + elapsedTime + " миллисекунд");
 }
 
 function bresenhamLine(x1, y1, x2, y2) {
